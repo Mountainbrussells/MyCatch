@@ -34,6 +34,7 @@
 		C93951531AA7A520004867CB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93951521AA7A520004867CB /* Parse.framework */; };
 		C93951551AA7A55B004867CB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93951541AA7A55B004867CB /* Bolts.framework */; };
 		C9BC740B1AA7A99000E68B94 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BC740A1AA7A99000E68B94 /* LogInViewController.m */; };
+		C9BC740E1AA7AC0600E68B94 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BC740D1AA7AC0600E68B94 /* SignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		C93951541AA7A55B004867CB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Downloads/parse-library-1.6.3 (1) 2/Bolts.framework"; sourceTree = "<group>"; };
 		C9BC74091AA7A99000E68B94 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		C9BC740A1AA7A99000E68B94 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		C9BC740C1AA7AC0600E68B94 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		C9BC740D1AA7AC0600E68B94 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +170,8 @@
 				C93950FA1AA65583004867CB /* SecondViewController.m */,
 				C9BC74091AA7A99000E68B94 /* LogInViewController.h */,
 				C9BC740A1AA7A99000E68B94 /* LogInViewController.m */,
+				C9BC740C1AA7AC0600E68B94 /* SignUpViewController.h */,
+				C9BC740D1AA7AC0600E68B94 /* SignUpViewController.m */,
 				C93950FC1AA65583004867CB /* Main.storyboard */,
 				C93950FF1AA65583004867CB /* Images.xcassets */,
 				C93951011AA65583004867CB /* LaunchScreen.xib */,
@@ -303,6 +308,7 @@
 			files = (
 				C93950FB1AA65583004867CB /* SecondViewController.m in Sources */,
 				C93950F51AA65583004867CB /* AppDelegate.m in Sources */,
+				C9BC740E1AA7AC0600E68B94 /* SignUpViewController.m in Sources */,
 				C9BC740B1AA7A99000E68B94 /* LogInViewController.m in Sources */,
 				C93950F81AA65583004867CB /* FirstViewController.m in Sources */,
 				C93950F21AA65583004867CB /* main.m in Sources */,
