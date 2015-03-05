@@ -7,7 +7,8 @@
 //
 
 #import "SignUpViewController.h"
-#import <Parse/Parse.h>
+#import "TabBarViewController.h"
+
 
 @interface SignUpViewController ()
 
@@ -21,7 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.passwordText.secureTextEntry = YES;
+    self.passwordCheckText.secureTextEntry = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +50,8 @@
     // Create a Parse User Object
     PFUser *user = [PFUser user];
     
+    
+    
     // Assign User Name
     user.username = self.userText.text;
     
@@ -60,7 +66,7 @@
         // Send user to parse
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                //The registration was successful, go to the wall
+                //The registration was successful, go to the next screen
                 [self performSegueWithIdentifier:@"SignupSuccesful" sender:self];
                 
             } else {
@@ -78,6 +84,8 @@
                 [alert show];
             }
     
+    // assign user property
+    self.user = user;
     
 }
 
@@ -89,14 +97,19 @@
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"SignupSuccesful"]) {
+        
+        TabBarViewController *mainView = segue.destinationViewController;
+        
+        mainView.user = self.user;
+        
+    }
 }
-*/
+
 
 @end

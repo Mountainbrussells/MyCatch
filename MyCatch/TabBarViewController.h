@@ -1,15 +1,16 @@
 //
-//  SignUpViewController.h
+//  TabBarViewController.h
 //  MyCatch
 //
-//  Created by Ben Russell on 3/4/15.
+//  Created by Ben Russell on 3/5/15.
 //  Copyright (c) 2015 Ben Russell. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
 #import <Parse/Parse.h>
 
-@interface SignUpViewController : UIViewController
+@interface TabBarViewController : UITabBarController
 
 @property (nonatomic, strong) PFUser *user;
 
