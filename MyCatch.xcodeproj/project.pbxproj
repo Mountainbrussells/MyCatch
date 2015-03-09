@@ -36,6 +36,7 @@
 		C9BC740B1AA7A99000E68B94 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BC740A1AA7A99000E68B94 /* LogInViewController.m */; };
 		C9BC740E1AA7AC0600E68B94 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BC740D1AA7AC0600E68B94 /* SignUpViewController.m */; };
 		C9BC74111AA8C11B00E68B94 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BC74101AA8C11B00E68B94 /* TabBarViewController.m */; };
+		C9BC74141AADF16C00E68B94 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BC74131AADF16C00E68B94 /* CustomTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,8 @@
 		C9BC740D1AA7AC0600E68B94 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		C9BC740F1AA8C11B00E68B94 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		C9BC74101AA8C11B00E68B94 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		C9BC74121AADF16C00E68B94 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
+		C9BC74131AADF16C00E68B94 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,8 @@
 				C9BC740D1AA7AC0600E68B94 /* SignUpViewController.m */,
 				C9BC740F1AA8C11B00E68B94 /* TabBarViewController.h */,
 				C9BC74101AA8C11B00E68B94 /* TabBarViewController.m */,
+				C9BC74121AADF16C00E68B94 /* CustomTableViewCell.h */,
+				C9BC74131AADF16C00E68B94 /* CustomTableViewCell.m */,
 				C93950FC1AA65583004867CB /* Main.storyboard */,
 				C93950FF1AA65583004867CB /* Images.xcassets */,
 				C93951011AA65583004867CB /* LaunchScreen.xib */,
@@ -317,6 +322,7 @@
 				C9BC740E1AA7AC0600E68B94 /* SignUpViewController.m in Sources */,
 				C9BC740B1AA7A99000E68B94 /* LogInViewController.m in Sources */,
 				C93950F81AA65583004867CB /* FirstViewController.m in Sources */,
+				C9BC74141AADF16C00E68B94 /* CustomTableViewCell.m in Sources */,
 				C93950F21AA65583004867CB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
