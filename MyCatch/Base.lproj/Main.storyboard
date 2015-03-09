@@ -77,7 +77,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="bXT-8U-O4M" kind="show" id="W2O-9X-ckm"/>
+                                    <segue destination="bXT-8U-O4M" kind="show" identifier="showNewCatch" id="W2O-9X-ckm"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MY CATCHES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab3-uc-QTM">
@@ -426,6 +426,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8hl-hC-kCu"/>
-        <segue reference="u7Y-xg-7CH"/>
+        <segue reference="q2S-G2-bgt"/>
     </inferredMetricsTieBreakers>
 </document>

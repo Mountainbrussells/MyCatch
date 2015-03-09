@@ -37,8 +37,8 @@
     
     PFObject *catch = [PFObject objectWithClassName:@"Catch"];
     
-    //need to figure out user
-    catch[@"user"] = @"user";
+    
+    catch[@"user"] = self.user;
     catch[@"date"] = self.dateLabel.text;
     catch[@"species"] = self.speciesTextView.text;
     catch[@"river"] = self.riverTextView.text;

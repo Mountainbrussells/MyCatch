@@ -7,6 +7,7 @@
 //
 
 #import "TabBarViewController.h"
+#import "FirstViewController.h"
 
 @interface TabBarViewController ()
 
@@ -22,6 +23,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"%@", self.user.username);
+    
+    FirstViewController *fvc = [[self viewControllers] objectAtIndex:0];
+    fvc.user = self.user;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
