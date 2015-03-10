@@ -9,23 +9,91 @@
 #import <Parse/Parse.h>
 #import "FirstViewController.h"
 #import "NewCatchViewController.h"
+#import "CustomTableViewCell.h"
 
 @interface FirstViewController ()
+{
+    NSMutableArray *_dataArray;
+}
 
 @end
 
 @implementation FirstViewController
 
+@synthesize catchTable;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    catchTable.delegate = self;
+    catchTable.dataSource = self;
     
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    _dataArray = [NSMutableArray new];
+    
+    [self refreshData];
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - refresh
+
+- (void) refreshData
+{
+    [_dataArray removeAllObjects];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Catch"];
+    [query whereKey:@"user" equalTo:self.user];
+    [query orderByAscending:@"date"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSLog(@"Successfully retrieved: %@", objects);
+            [_dataArray addObjectsFromArray:objects];
+            NSLog(@"dataArray contains: %@", _dataArray);
+            
+            // Load data into table once it has been retrieved
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.catchTable reloadData];
+            });
+        } else {
+            NSString *errorString = [[error userInfo] objectForKey:@"error"];
+            UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [errorAlertView show];        }
+    }];
+}
+
+# pragma mark - tableview delegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    //  This is where the count of cells will come from the back end
+    NSLog(@"there are %lu catches", (unsigned long)_dataArray.count);
+    return _dataArray.count;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CustomTableViewCell *cell = (CustomTableViewCell *)[tableView dequeueReusableCellWithIdentifier: @"customCellIdentifier"];
+    
+    
+//    PFObject *catch = [_dataArray objectAtIndex:indexPath.row];
+//    cell.dateLabel.text = catch.name;
+//    cell.bulletDescription.text = area.bulletDescription;
+//    cell.areaIconView.image = [UIImage imageNamed:@"LocationsImage"];
+    
+    
+    
+    return cell;
 }
 
 #pragma mark - segue preperations

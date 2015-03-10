@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) PFUser *user;
+@property (weak, nonatomic) IBOutlet UITableView *catchTable;
+
 
 
 @end
