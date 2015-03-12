@@ -11,6 +11,7 @@
 #import "NewCatchViewController.h"
 #import "CatchRecordViewController.h"
 #import "CustomTableViewCell.h"
+#import "FilterSingleton.h"
 
 
 @interface FirstViewController ()
@@ -46,7 +47,26 @@
     [super viewDidAppear:animated];
     _dataArray = [NSMutableArray new];
     
-    [self refreshData];
+    //  Move this to inside filter if/else
+    //[self refreshData];
+    
+    // Check if singleton working
+    FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
+    
+    if (sharedInstance.filterOn == YES) {
+        NSLog(@"Filter is on!");
+    } else {
+        NSLog(@"Filter is off");
+        // PROBLEM:  if you toggle back and forth more than once while filter is on, then data currently disapears
+        [self refreshData];
+    }
+    
+    if (sharedInstance.riverOn == YES) {
+        NSLog(@"Filtering for fish from this river: %@", sharedInstance.riverString);
+        
+    } else {
+        NSLog(@"Not filtering for river");
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -12,6 +12,9 @@
 
 @synthesize filterOn;
 @synthesize monthOn;
+@synthesize monthString;
+@synthesize riverOn;
+@synthesize riverString;
 
 
 static FilterSingleton *sharedInstance = nil;

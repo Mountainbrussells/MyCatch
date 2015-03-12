@@ -10,8 +10,11 @@
 
 @interface FilterSingleton : NSObject
 
-@property BOOL *filterOn;
-@property BOOL *monthOn;
+@property BOOL filterOn;
+@property BOOL monthOn;
+@property (weak, nonatomic) NSString *monthString;
+@property BOOL riverOn;
+@property (weak, nonatomic) NSString *riverString;
 
 
 + (id)sharedInstance;

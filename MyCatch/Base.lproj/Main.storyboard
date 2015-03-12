@@ -403,6 +403,9 @@
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dyl-Pn-2XW">
                                 <rect key="frame" x="258" y="183" width="51" height="31"/>
+                                <connections>
+                                    <action selector="toggleForRiverSwitch:" destination="8rJ-Kc-sve" eventType="valueChanged" id="Lal-8q-xdO"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="River" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xr-bJ-9Cq">
                                 <rect key="frame" x="98" y="188" width="40" height="21"/>
@@ -429,6 +432,8 @@
                         <outlet property="filterSwitch" destination="CBI-PH-E6N" id="7kE-Yq-Dks"/>
                         <outlet property="monthSwitch" destination="83G-iq-l8T" id="OSj-SI-IL2"/>
                         <outlet property="monthTextField" destination="2z9-XH-0Up" id="mev-JD-38O"/>
+                        <outlet property="riverSwitch" destination="dyl-Pn-2XW" id="Be7-B4-ZCg"/>
+                        <outlet property="riverTextField" destination="lY3-Cr-PpI" id="Bns-e6-Obg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
