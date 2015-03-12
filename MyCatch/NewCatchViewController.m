@@ -16,7 +16,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    NSDate *now = [NSDate date];
+    // You need an NSDateFormatter that will turn a date into a simple string
+    static NSDateFormatter *dateFormatter = nil;
+    if (!dateFormatter){
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateStyle = NSDateFormatterShortStyle;
+        dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    }
+    
+    // Use filtered NSDate object to set dateLabel contents
+    self.dateLabel.text = [dateFormatter stringFromDate:now];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,6 +39,7 @@
 #pragma mark - IBActions
 
 - (IBAction)backButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)photoButton:(id)sender {
@@ -49,6 +61,7 @@
     [catch saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             // transition back to list screen
+            [self dismissViewControllerAnimated:YES completion:nil];
         } else {
             // present error message
         }

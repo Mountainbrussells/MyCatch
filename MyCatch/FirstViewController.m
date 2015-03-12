@@ -11,6 +11,7 @@
 #import "NewCatchViewController.h"
 #import "CustomTableViewCell.h"
 
+
 @interface FirstViewController ()
 {
     NSMutableArray *_dataArray;
@@ -33,10 +34,18 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+//    _dataArray = [NSMutableArray new];
+//    
+//    [self refreshData];
+
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     _dataArray = [NSMutableArray new];
     
     [self refreshData];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,11 +94,11 @@
 {
     CustomTableViewCell *cell = (CustomTableViewCell *)[tableView dequeueReusableCellWithIdentifier: @"customCellIdentifier"];
     
-    
-//    PFObject *catch = [_dataArray objectAtIndex:indexPath.row];
-//    cell.dateLabel.text = catch.name;
-//    cell.bulletDescription.text = area.bulletDescription;
-//    cell.areaIconView.image = [UIImage imageNamed:@"LocationsImage"];
+    // pull individual objects properties from array
+    PFObject *catch = [_dataArray objectAtIndex:indexPath.row];
+    cell.dateLabel.text = [catch objectForKey:@"date"];
+    cell.riverLabel.text = [catch objectForKey:@"river"];
+    cell.speciesLabel.text = [catch objectForKey:@"species"];
     
     
     
