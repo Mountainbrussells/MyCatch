@@ -38,6 +38,8 @@
 		C9BC74111AA8C11B00E68B94 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BC74101AA8C11B00E68B94 /* TabBarViewController.m */; };
 		C9BC74141AADF16C00E68B94 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BC74131AADF16C00E68B94 /* CustomTableViewCell.m */; };
 		C9BC74171AADFBB600E68B94 /* NewCatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BC74161AADFBB600E68B94 /* NewCatchViewController.m */; };
+		C9C1CCAF1AB1E4FA00C0BC94 /* CatchRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C1CCAE1AB1E4FA00C0BC94 /* CatchRecordViewController.m */; };
+		C9C1CCB51AB22FF500C0BC94 /* FilterSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C1CCB41AB22FF500C0BC94 /* FilterSingleton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,10 @@
 		C9BC74131AADF16C00E68B94 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		C9BC74151AADFBB600E68B94 /* NewCatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCatchViewController.h; sourceTree = "<group>"; };
 		C9BC74161AADFBB600E68B94 /* NewCatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCatchViewController.m; sourceTree = "<group>"; };
+		C9C1CCAD1AB1E4FA00C0BC94 /* CatchRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatchRecordViewController.h; sourceTree = "<group>"; };
+		C9C1CCAE1AB1E4FA00C0BC94 /* CatchRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatchRecordViewController.m; sourceTree = "<group>"; };
+		C9C1CCB31AB22FF500C0BC94 /* FilterSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterSingleton.h; path = ../FilterSingleton.h; sourceTree = "<group>"; };
+		C9C1CCB41AB22FF500C0BC94 /* FilterSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterSingleton.m; path = ../FilterSingleton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +179,8 @@
 			children = (
 				C93950F31AA65583004867CB /* AppDelegate.h */,
 				C93950F41AA65583004867CB /* AppDelegate.m */,
+				C9C1CCB31AB22FF500C0BC94 /* FilterSingleton.h */,
+				C9C1CCB41AB22FF500C0BC94 /* FilterSingleton.m */,
 				C93950F61AA65583004867CB /* FirstViewController.h */,
 				C93950F71AA65583004867CB /* FirstViewController.m */,
 				C93950F91AA65583004867CB /* SecondViewController.h */,
@@ -187,6 +195,8 @@
 				C9BC74131AADF16C00E68B94 /* CustomTableViewCell.m */,
 				C9BC74151AADFBB600E68B94 /* NewCatchViewController.h */,
 				C9BC74161AADFBB600E68B94 /* NewCatchViewController.m */,
+				C9C1CCAD1AB1E4FA00C0BC94 /* CatchRecordViewController.h */,
+				C9C1CCAE1AB1E4FA00C0BC94 /* CatchRecordViewController.m */,
 				C93950FC1AA65583004867CB /* Main.storyboard */,
 				C93950FF1AA65583004867CB /* Images.xcassets */,
 				C93951011AA65583004867CB /* LaunchScreen.xib */,
@@ -324,9 +334,11 @@
 				C93950FB1AA65583004867CB /* SecondViewController.m in Sources */,
 				C93950F51AA65583004867CB /* AppDelegate.m in Sources */,
 				C9BC74111AA8C11B00E68B94 /* TabBarViewController.m in Sources */,
+				C9C1CCAF1AB1E4FA00C0BC94 /* CatchRecordViewController.m in Sources */,
 				C9BC740E1AA7AC0600E68B94 /* SignUpViewController.m in Sources */,
 				C9BC740B1AA7A99000E68B94 /* LogInViewController.m in Sources */,
 				C93950F81AA65583004867CB /* FirstViewController.m in Sources */,
+				C9C1CCB51AB22FF500C0BC94 /* FilterSingleton.m in Sources */,
 				C9BC74141AADF16C00E68B94 /* CustomTableViewCell.m in Sources */,
 				C9BC74171AADFBB600E68B94 /* NewCatchViewController.m in Sources */,
 				C93950F21AA65583004867CB /* main.m in Sources */,

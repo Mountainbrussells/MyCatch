@@ -14,14 +14,34 @@
 
 @implementation SecondViewController
 
+@synthesize filterSwitch;
+@synthesize monthSwitch;
+@synthesize monthTextField;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)toggleForFilterSwitch:(id)sender {
+    if (filterSwitch.on) {
+        NSLog(@"switch is on");
+    } else {
+        NSLog(@"switch is off");
+    }
+}
+
+
+
 
 @end

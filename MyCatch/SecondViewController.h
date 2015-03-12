@@ -10,6 +10,12 @@
 
 @interface SecondViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UISwitch *filterSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *monthSwitch;
+
+@property (weak, nonatomic) IBOutlet UITextField *monthTextField;
+
+
 
 @end
 

@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 #import "FirstViewController.h"
 #import "NewCatchViewController.h"
+#import "CatchRecordViewController.h"
 #import "CustomTableViewCell.h"
 
 
@@ -112,7 +113,10 @@
     if ([segue.identifier isEqualToString:@"showNewCatch"]) {
         NewCatchViewController *ncvc = segue.destinationViewController;
         ncvc.user = self.user;
-    }
-}
+    } else if ([segue.identifier isEqualToString:@"showCatchRecord"]) {
+        NSIndexPath *indexPath = [self.catchTable indexPathForSelectedRow];
+        CatchRecordViewController *recordView = segue.destinationViewController;
+        recordView.catch = [_dataArray objectAtIndex:indexPath.row];
+    }}
 
 @end
