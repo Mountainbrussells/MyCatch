@@ -39,16 +39,16 @@
 //    _dataArray = [NSMutableArray new];
 //    
 //    [self refreshData];
-
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     _dataArray = [NSMutableArray new];
+    NSLog(@"FirstViewController is appearing");
     
-    //  Move this to inside filter if/else
-    //[self refreshData];
+    
     
     // Check if singleton working
     FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
@@ -62,13 +62,6 @@
         // PROBLEM:  if you toggle back and forth more than once while filter is on, then data currently disapears
         [self refreshData];
     }
-    
-//    if (sharedInstance.riverOn == YES) {
-//        NSLog(@"Filtering for fish from this river: %@", sharedInstance.riverString);
-//        
-//    } else {
-//        NSLog(@"Not filtering for river");
-//    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -107,6 +100,7 @@
 {
     FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
     NSMutableArray *filterArray = [[NSMutableArray alloc] init];
+    [filterArray removeAllObjects];
     
     if (sharedInstance.riverOn == YES) {
         NSString *riverString = [NSString stringWithFormat:@"river = '%@'", sharedInstance.riverString];
@@ -115,8 +109,47 @@
         
     }
     
+    if (sharedInstance.speciesOn == YES) {
+        NSString *speciesString = [ NSString stringWithFormat:@"species = '%@'", sharedInstance.speciesString];
+        NSLog(@"%@", speciesString);
+        [filterArray addObject:speciesString];
+    }
     
+    if (sharedInstance.flyOn == YES) {
+        NSString*flyString = [NSString stringWithFormat:@"fly = '%@'", sharedInstance.flyString];
+        NSLog(@"%@", flyString);
+        [filterArray addObject:flyString];
+        
+    }
+    
+    //  YAY I love it when I find easy solutions to problems!
+    NSLog(@"%@", [filterArray componentsJoinedByString:@" AND "]);
+    NSString *predicateString = [NSString stringWithFormat:@"%@", [filterArray componentsJoinedByString:@" AND "]];
+    NSLog(@"%@", predicateString);
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateString];
+    PFQuery *query = [PFQuery queryWithClassName:@"Catch" predicate:predicate];
+    [query whereKey:@"user" equalTo:self.user];
+    [query orderByAscending:@"date"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSLog(@"Successfully retrieved: %@", objects);
+            [_dataArray addObjectsFromArray:objects];
+            NSLog(@"dataArray contains: %@", _dataArray);
+            
+            // Load data into table once it has been retrieved
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.catchTable reloadData];
+            });
+        } else {
+            NSString *errorString = [[error userInfo] objectForKey:@"error"];
+            UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [errorAlertView show];        }
+    }];
 }
+
+
 
 # pragma mark - tableview delegate
 

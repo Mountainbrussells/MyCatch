@@ -24,15 +24,12 @@
 @synthesize speciesTextField;
 @synthesize flySwitch;
 @synthesize flyTextField;
+@synthesize monthPicker;
+@synthesize monthData;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
     self.monthTextField.hidden = YES;
     self.riverTextField.hidden = YES;
     self.speciesTextField.hidden = YES;
@@ -41,12 +38,41 @@
     self.riverSwitch.hidden = YES;
     self.speciesSwitch.hidden = YES;
     self.flySwitch.hidden = YES;
+    
+    // Below is initializing the pickerViews and their data, and tags the pickerViews
+    
+    //  Adding Toolbar with done button to picker views
+    UIToolbar *toolBar= [[UIToolbar alloc] initWithFrame:CGRectMake(0,0,320,44)];
+    [toolBar setBarStyle:UIBarStyleBlackOpaque];
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *barButtonDone = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                      style:UIBarButtonItemStyleBordered target:self action:@selector(dismissPickerView)];
+    toolBar.items = [[NSArray alloc] initWithObjects:flexibleSpace, barButtonDone, nil];
+    
+    self.monthPicker = [[UIPickerView alloc] init];
+    self.monthPicker.dataSource = self;
+    self.monthPicker.delegate = self;
+    self.monthPicker.tag = 0;
+    self.monthData = [[NSMutableArray alloc] initWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"11", @"12", nil];
+    
+
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    
     FilterSingleton *sharedClass = [FilterSingleton sharedInstance];
-    sharedClass.riverString = self.riverTextField.text;
+    NSLog(@"As the view disapears the riverTextField Says %@", self.riverTextField.text);
+    sharedClass.riverString = [NSString stringWithFormat: @"%@", self.riverTextField.text];
+    NSLog(@"FilterSington.riverString = %@", sharedClass.riverString);
+    
+    sharedClass.speciesString = [NSString stringWithFormat:@"%@", self.speciesTextField.text];
+    sharedClass.flyString = [NSString stringWithFormat:@"%@", self.speciesTextField.text];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,6 +99,9 @@
         self.riverSwitch.hidden = YES;
         self.speciesSwitch.hidden = YES;
         self.flySwitch.hidden =YES;
+        self.riverTextField.hidden = YES;
+        self.speciesTextField.hidden = YES;
+        self.flyTextField.hidden = YES;
     }
 }
 
@@ -83,6 +112,8 @@
         FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
         [sharedInstance setRiverOn:YES];
         self.riverTextField.hidden = NO;
+    
+        sharedInstance.riverString = self.riverTextField.text;
         
         
     } else {
@@ -100,15 +131,44 @@
     
     if(speciesSwitch.on) {
         NSLog(@"Filtering for species");
-        
+        FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
+        [sharedInstance setSpeciesOn:YES];
+        self.speciesTextField.hidden = NO;
+        sharedInstance.speciesString = self.speciesTextField.text;
+    } else {
+        NSLog(@"Not filtering for species");
+        FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
+        [sharedInstance setSpeciesOn:NO];
+        self.speciesTextField.hidden = YES;
+        self.speciesTextField.text = nil;
     }
     
 }
 
 - (IBAction)toggleForFlySwitch:(id)sender {
     
-    
-    
+    if(flySwitch.on) {
+        NSLog(@"Filtering for fly");
+        FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
+        [sharedInstance setFlyOn:YES];
+        self.flyTextField.hidden = NO;
+        sharedInstance.flyString = self.flyTextField.text;
+    } else {
+        NSLog(@"Not filtering for fly");
+        FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
+        [sharedInstance setFlyOn:NO];
+        self.flyTextField.hidden = YES;
+        self.flyTextField.text = nil;
+    }
+}
+
+# pragma mark - Text Field Delegates
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.riverTextField resignFirstResponder];
+    [self.speciesTextField resignFirstResponder];
+    [self.flyTextField resignFirstResponder];               
 }
 
 

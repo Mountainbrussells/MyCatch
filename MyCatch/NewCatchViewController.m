@@ -48,10 +48,14 @@
 - (IBAction)saveButton:(id)sender {
     
     PFObject *catch = [PFObject objectWithClassName:@"Catch"];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     
+    NSInteger month = [components month];
+    NSString *monthString = [NSString stringWithFormat:@"%ld", (long)month];
     
     catch[@"user"] = self.user;
     catch[@"date"] = self.dateLabel.text;
+    catch[@"month"] = monthString;
     catch[@"species"] = self.speciesTextView.text;
     catch[@"river"] = self.riverTextView.text;
     catch[@"fly"] = self.flyTextView.text;
