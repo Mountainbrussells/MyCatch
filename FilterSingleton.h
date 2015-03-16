@@ -15,6 +15,11 @@
 @property (weak, nonatomic) NSString *monthString;
 @property BOOL riverOn;
 @property (weak, nonatomic) NSString *riverString;
+@property BOOL speciesOn;
+@property (weak, nonatomic) NSString *speciesString;
+@property BOOL flyOn;
+@property (weak, nonatomic) NSString *flyString;
+
 
 
 + (id)sharedInstance;

@@ -15,6 +15,10 @@
 @synthesize monthString;
 @synthesize riverOn;
 @synthesize riverString;
+@synthesize speciesOn;
+@synthesize speciesString;
+@synthesize flyOn;
+@synthesize flyString;
 
 
 static FilterSingleton *sharedInstance = nil;

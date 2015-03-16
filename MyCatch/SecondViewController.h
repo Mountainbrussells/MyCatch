@@ -15,6 +15,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *monthTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *riverSwitch;
 @property (weak, nonatomic) IBOutlet UITextField *riverTextField;
+@property (weak, nonatomic) IBOutlet UISwitch *speciesSwitch;
+@property (weak, nonatomic) IBOutlet UITextField *speciesTextField;
+@property (weak, nonatomic) IBOutlet UISwitch *flySwitch;
+@property (weak, nonatomic) IBOutlet UITextField *flyTextField;
 
 
 

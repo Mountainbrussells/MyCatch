@@ -55,18 +55,20 @@
     
     if (sharedInstance.filterOn == YES) {
         NSLog(@"Filter is on!");
+        [self filterData];
+        
     } else {
         NSLog(@"Filter is off");
         // PROBLEM:  if you toggle back and forth more than once while filter is on, then data currently disapears
         [self refreshData];
     }
     
-    if (sharedInstance.riverOn == YES) {
-        NSLog(@"Filtering for fish from this river: %@", sharedInstance.riverString);
-        
-    } else {
-        NSLog(@"Not filtering for river");
-    }
+//    if (sharedInstance.riverOn == YES) {
+//        NSLog(@"Filtering for fish from this river: %@", sharedInstance.riverString);
+//        
+//    } else {
+//        NSLog(@"Not filtering for river");
+//    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,6 +101,21 @@
             UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             [errorAlertView show];        }
     }];
+}
+
+- (void) filterData
+{
+    FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
+    NSMutableArray *filterArray = [[NSMutableArray alloc] init];
+    
+    if (sharedInstance.riverOn == YES) {
+        NSString *riverString = [NSString stringWithFormat:@"river = '%@'", sharedInstance.riverString];
+        NSLog(@"%@", riverString);
+        [filterArray addObject:riverString];
+        
+    }
+    
+    
 }
 
 # pragma mark - tableview delegate
