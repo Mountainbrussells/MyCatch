@@ -8,6 +8,7 @@
 
 #import "TabBarViewController.h"
 #import "FirstViewController.h"
+#import "SecondViewController.h"
 
 @interface TabBarViewController ()
 
@@ -26,6 +27,9 @@
     
     FirstViewController *fvc = [[self viewControllers] objectAtIndex:0];
     fvc.user = self.user;
+    
+    SecondViewController *svc = [[self viewControllers] objectAtIndex:1];
+    svc.user = self.user;
     
     
 }

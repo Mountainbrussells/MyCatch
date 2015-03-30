@@ -12,13 +12,13 @@
 
 @property BOOL filterOn;
 @property BOOL monthOn;
-@property (weak, nonatomic) NSString *monthString;
+@property (strong, retain) NSString *monthString;
 @property BOOL riverOn;
-@property (weak, nonatomic) NSString *riverString;
+@property (strong, retain) NSString *riverString;
 @property BOOL speciesOn;
-@property (weak, nonatomic) NSString *speciesString;
+@property (strong, retain) NSString *speciesString;
 @property BOOL flyOn;
-@property (weak, nonatomic) NSString *flyString;
+@property (strong, retain) NSString *flyString;
 
 
 

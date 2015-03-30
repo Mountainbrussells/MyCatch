@@ -10,10 +10,12 @@
 
 @interface CustomTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIView *catchImageView;
+
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *riverLabel;
 @property (weak, nonatomic) IBOutlet UILabel *speciesLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *catchImageView;
 
 
 

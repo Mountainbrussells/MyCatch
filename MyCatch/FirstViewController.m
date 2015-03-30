@@ -36,9 +36,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    _dataArray = [NSMutableArray new];
-//    
-//    [self refreshData];
     
 }
 
@@ -81,9 +78,9 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            NSLog(@"Successfully retrieved: %@", objects);
+            //NSLog(@"Successfully retrieved: %@", objects);
             [_dataArray addObjectsFromArray:objects];
-            NSLog(@"dataArray contains: %@", _dataArray);
+            //NSLog(@"dataArray contains: %@", _dataArray);
             
             // Load data into table once it has been retrieved
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -102,51 +99,84 @@
     NSMutableArray *filterArray = [[NSMutableArray alloc] init];
     [filterArray removeAllObjects];
     
+    if (sharedInstance.monthOn == YES) {
+        
+        if([sharedInstance.monthString isEqualToString:@""]){
+            NSLog(@"The month field is blank");
+        } else {
+            NSString *monthString = [NSString stringWithFormat:@"month = '%@'", sharedInstance.monthString];
+            NSLog(@"%@", monthString);
+            [filterArray addObject:monthString];
+                  }
+        
+    }
+    
     if (sharedInstance.riverOn == YES) {
-        NSString *riverString = [NSString stringWithFormat:@"river = '%@'", sharedInstance.riverString];
-        NSLog(@"%@", riverString);
-        [filterArray addObject:riverString];
+        if ([sharedInstance.riverString isEqualToString:@""]) {
+            NSLog(@"The River Field is blank");
+        } else {
+        
+            NSString *riverString = [NSString stringWithFormat:@"river = '%@'", sharedInstance.riverString];
+            NSLog(@"%@", riverString);
+            [filterArray addObject:riverString];
+        }
         
     }
     
     if (sharedInstance.speciesOn == YES) {
+        if ([sharedInstance.speciesString isEqualToString:@""]){
+            NSLog(@"The species field is blank");
+        } else {
         NSString *speciesString = [ NSString stringWithFormat:@"species = '%@'", sharedInstance.speciesString];
         NSLog(@"%@", speciesString);
         [filterArray addObject:speciesString];
+        }
     }
     
     if (sharedInstance.flyOn == YES) {
-        NSString*flyString = [NSString stringWithFormat:@"fly = '%@'", sharedInstance.flyString];
-        NSLog(@"%@", flyString);
+        if ([sharedInstance.flyString isEqualToString:@""]){
+            NSLog(@"the fly field is blank");
+            
+        } else {
+        NSString *flyString = [NSString stringWithFormat:@"fly = '%@'", sharedInstance.flyString];
+        NSLog(@"The fly string is %@", flyString);
         [filterArray addObject:flyString];
+        }
         
     }
     
-    //  YAY I love it when I find easy solutions to problems!
-    NSLog(@"%@", [filterArray componentsJoinedByString:@" AND "]);
-    NSString *predicateString = [NSString stringWithFormat:@"%@", [filterArray componentsJoinedByString:@" AND "]];
-    NSLog(@"%@", predicateString);
+    NSString *filterString = [NSString stringWithFormat:@"%@", [filterArray componentsJoinedByString:@" AND "]];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateString];
-    PFQuery *query = [PFQuery queryWithClassName:@"Catch" predicate:predicate];
-    [query whereKey:@"user" equalTo:self.user];
-    [query orderByAscending:@"date"];
+    if ([filterString  isEqual: @""]) {
+        [self refreshData];
+    } else {
     
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            NSLog(@"Successfully retrieved: %@", objects);
-            [_dataArray addObjectsFromArray:objects];
-            NSLog(@"dataArray contains: %@", _dataArray);
+        //  YAY I love it when I find easy solutions to problems!
+        NSLog(@"%@", [filterArray componentsJoinedByString:@" AND "]);
+        NSString *predicateString = [NSString stringWithFormat:@"%@", [filterArray componentsJoinedByString:@" AND "]];
+        NSLog(@"%@", predicateString);
+    
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateString];
+        PFQuery *query = [PFQuery queryWithClassName:@"Catch" predicate:predicate];
+        [query whereKey:@"user" equalTo:self.user];
+        [query orderByAscending:@"date"];
+    
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                // NSLog(@"Successfully retrieved: %@", objects);
+                [_dataArray addObjectsFromArray:objects];
+                // NSLog(@"dataArray contains: %@", _dataArray);
             
-            // Load data into table once it has been retrieved
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.catchTable reloadData];
-            });
-        } else {
-            NSString *errorString = [[error userInfo] objectForKey:@"error"];
-            UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [errorAlertView show];        }
-    }];
+                // Load data into table once it has been retrieved
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.catchTable reloadData];
+                });
+            } else {
+                NSString *errorString = [[error userInfo] objectForKey:@"error"];
+                UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [errorAlertView show];        }
+        }];
+    }
 }
 
 
@@ -170,8 +200,14 @@
     cell.dateLabel.text = [catch objectForKey:@"date"];
     cell.riverLabel.text = [catch objectForKey:@"river"];
     cell.speciesLabel.text = [catch objectForKey:@"species"];
-    
-    
+    // Get image
+    PFFile *imageFile = [catch objectForKey:@"photo"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:data];
+            cell.catchImageView.image = image;
+        }
+    }];
     
     return cell;
 }

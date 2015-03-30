@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface SecondViewController : UIViewController<UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+
+
+@property (nonatomic, strong) PFUser *user;
 
 @property (weak, nonatomic) IBOutlet UISwitch *filterSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *monthSwitch;
@@ -24,6 +28,12 @@
 
 @property (strong, nonatomic) UIPickerView *monthPicker;
 @property (strong, nonatomic) NSMutableArray *monthData;
+@property (strong, nonatomic) UIPickerView *riverPicker;
+@property (strong, nonatomic) NSMutableArray *riverData;
+@property (strong, nonatomic) UIPickerView *speciesPicker;
+@property (strong, nonatomic) NSMutableArray *speciesData;
+@property (strong, nonatomic) UIPickerView *flyPicker;
+@property (strong, nonatomic) NSMutableArray *flyData;
 
 
 

@@ -30,6 +30,14 @@
     self.weatherText.text = [catch objectForKey:@"weather"];
     self.temperatureText.text = [catch objectForKey:@"temperature"];
     self.techniqueText.text = [catch objectForKey:@"technique"];
+    // Get image
+    PFFile *imageFile = [catch objectForKey:@"photo"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:data];
+            self.catchImageView.image = image;
+        }
+    }];
     
 }
 

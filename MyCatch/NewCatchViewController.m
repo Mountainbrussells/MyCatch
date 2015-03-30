@@ -8,7 +8,7 @@
 
 #import "NewCatchViewController.h"
 
-@interface NewCatchViewController ()
+@interface NewCatchViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
 
 @end
 
@@ -52,7 +52,7 @@
     
     NSInteger month = [components month];
     NSString *monthString = [NSString stringWithFormat:@"%ld", (long)month];
-    
+    // set catch properties
     catch[@"user"] = self.user;
     catch[@"date"] = self.dateLabel.text;
     catch[@"month"] = monthString;
@@ -62,6 +62,12 @@
     catch[@"weather"] = self.weatherTextView.text;
     catch[@"temperature"] = self.tempTextView.text;
     catch[@"technique"] = self.techniqueTextView.text;
+    
+    // set catch image
+    NSData *imageData = UIImageJPEGRepresentation(self.catchImageView.image, 0.5f);
+    PFFile *file = [PFFile fileWithData:imageData];
+    catch[@"photo"] = file;
+    
     [catch saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             // transition back to list screen
@@ -72,6 +78,74 @@
     }];
     
     
+}
+
+- (IBAction)takePhoto:(id)sender {
+    
+    // Create image picker
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    // Take a picture
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        imagePicker.sourceType =UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    imagePicker.delegate = self;
+    
+    // Place picker on the screen
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (IBAction)choosePhoto:(id)sender {
+    // Create image picker
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    // Choose photo
+    imagePicker.sourceType =UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    
+    imagePicker.delegate = self;
+    
+    // Place picker on the screen
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+
+
+- (void)setImageForCatch:(UIImage*)img {
+    self.catchImageView.image = img;
+    self.catchImageView.backgroundColor = [UIColor clearColor];
+}
+
+// Populate photo into UIImageView
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    
+    
+    
+    
+    
+    
+    
+    self.catchImageView.image = image;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+# pragma mark - Text Field Delegates
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.speciesTextView resignFirstResponder];
+    [self.riverTextView resignFirstResponder];
+    [self.flyTextView resignFirstResponder];
+    [self.weatherTextView resignFirstResponder];
+    [self.tempTextView resignFirstResponder];
+    [self.techniqueTextView resignFirstResponder];
 }
 
 /*
