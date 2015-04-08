@@ -40,6 +40,10 @@
 @property (strong, nonatomic) UIPickerView *weatherPicker;
 @property (strong, nonatomic) NSMutableArray *weatherData;
 
+// scrollView
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 
 @end
 

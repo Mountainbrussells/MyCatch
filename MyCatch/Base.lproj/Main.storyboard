@@ -492,6 +492,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="598" id="Dh0-6U-XjG"/>
                                     <constraint firstAttribute="width" constant="372" id="J4k-3c-UeC"/>
@@ -505,9 +506,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="3t9-XF-07N" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="3" id="4hi-2U-JSs"/>
+                            <constraint firstAttribute="centerY" secondItem="3t9-XF-07N" secondAttribute="centerY" constant="14.5" id="7ju-l0-3ta"/>
                             <constraint firstAttribute="centerY" secondItem="3t9-XF-07N" secondAttribute="centerY" constant="14.5" id="KR9-cm-Zp6"/>
+                            <constraint firstItem="3t9-XF-07N" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="QTe-Qg-q0b"/>
                             <constraint firstAttribute="centerX" secondItem="3t9-XF-07N" secondAttribute="centerX" constant="-1.5" id="Wca-Qb-AFH"/>
                             <constraint firstItem="3t9-XF-07N" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="l2N-Zm-bAk"/>
+                            <constraint firstItem="3t9-XF-07N" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="uCS-ms-wSF"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Catch Filters" image="second" id="cPa-gy-q4n"/>
@@ -519,6 +524,7 @@
                         <outlet property="monthTextField" destination="2z9-XH-0Up" id="mev-JD-38O"/>
                         <outlet property="riverSwitch" destination="dyl-Pn-2XW" id="Be7-B4-ZCg"/>
                         <outlet property="riverTextField" destination="lY3-Cr-PpI" id="Bns-e6-Obg"/>
+                        <outlet property="scrollView" destination="3t9-XF-07N" id="Xhg-Zn-7K5"/>
                         <outlet property="speciesSwitch" destination="QAS-hG-Pma" id="edf-nt-Chh"/>
                         <outlet property="speciesTextField" destination="sqf-dH-ady" id="SFP-Fp-4WM"/>
                         <outlet property="weatherSwitch" destination="9xh-fX-Wut" id="VmA-oJ-yML"/>

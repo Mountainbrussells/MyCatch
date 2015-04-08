@@ -43,6 +43,8 @@
 @synthesize weatherPicker;
 @synthesize weatherData;
 
+@synthesize scrollView;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -59,6 +61,12 @@
     self.flySwitch.hidden = YES;
     self.weatherSwitch.hidden = YES;
     self.weatherTextField.hidden = YES;
+    
+    // add scrollView method
+    UITapGestureRecognizer *tapScroll = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
+    
+    tapScroll.cancelsTouchesInView = NO;
+    [self.scrollView addGestureRecognizer:tapScroll];
 
 }
 
@@ -382,6 +390,17 @@
     if (pickerView.tag == 4) {
         [self.weatherTextField setText:[weatherData objectAtIndex:row]];
     }
+}
+
+// tapped method for scrollView
+
+- (void)tapped
+{
+    [self.monthTextField resignFirstResponder];
+    [self.riverTextField resignFirstResponder];
+    [self.speciesTextField resignFirstResponder];
+    [self.flyTextField resignFirstResponder];
+    [self.weatherTextField resignFirstResponder];
 }
 
 
