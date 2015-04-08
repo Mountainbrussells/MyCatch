@@ -42,8 +42,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)photoButton:(id)sender {
-}
+
 
 - (IBAction)saveButton:(id)sender {
     
@@ -56,17 +55,27 @@
     catch[@"user"] = self.user;
     catch[@"date"] = self.dateLabel.text;
     catch[@"month"] = monthString;
-    catch[@"species"] = self.speciesTextView.text;
-    catch[@"river"] = self.riverTextView.text;
-    catch[@"fly"] = self.flyTextView.text;
-    catch[@"weather"] = self.weatherTextView.text;
-    catch[@"temperature"] = self.tempTextView.text;
-    catch[@"technique"] = self.techniqueTextView.text;
+    NSString *species = [self.speciesTextView.text capitalizedString];
+    catch[@"species"] = species;
+    NSString *river = [self.riverTextView.text capitalizedString];
+    catch[@"river"] = river;
+    NSString *fly = [self.flyTextView.text capitalizedString];
+    catch[@"fly"] = fly;
+    NSString *weather = [self.weatherTextView.text capitalizedString];
+    catch[@"weather"] = weather;
+    NSString *temp = [self.tempTextView.text capitalizedString];
+    catch[@"temperature"] = temp;
+    NSString *technique = [self.techniqueTextView.text capitalizedString];
+    catch[@"technique"] = technique;
     
     // set catch image
+    if (!self.catchImageView.image) {
+        NSLog(@"there is no photo");
+    } else {
     NSData *imageData = UIImageJPEGRepresentation(self.catchImageView.image, 0.5f);
     PFFile *file = [PFFile fileWithData:imageData];
     catch[@"photo"] = file;
+    }
     
     [catch saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {

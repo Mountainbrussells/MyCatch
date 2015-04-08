@@ -19,6 +19,9 @@
 @synthesize speciesString;
 @synthesize flyOn;
 @synthesize flyString;
+@synthesize weatherOn;
+@synthesize weatherString;
+
 
 
 static FilterSingleton *sharedInstance = nil;

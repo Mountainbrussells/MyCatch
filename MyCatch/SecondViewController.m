@@ -29,6 +29,9 @@
 @synthesize speciesTextField;
 @synthesize flySwitch;
 @synthesize flyTextField;
+@synthesize weatherSwitch;
+@synthesize weatherTextField;
+
 @synthesize monthPicker;
 @synthesize monthData;
 @synthesize riverPicker;
@@ -37,6 +40,8 @@
 @synthesize speciesData;
 @synthesize flyPicker;
 @synthesize flyData;
+@synthesize weatherPicker;
+@synthesize weatherData;
 
 
 - (void)viewDidLoad {
@@ -52,15 +57,8 @@
     self.riverSwitch.hidden = YES;
     self.speciesSwitch.hidden = YES;
     self.flySwitch.hidden = YES;
-    
-    // Below is initializing the pickerViews and their data, and tags the pickerViews
-    
-    
-    
-    
-    
-
-    
+    self.weatherSwitch.hidden = YES;
+    self.weatherTextField.hidden = YES;
 
 }
 
@@ -81,22 +79,12 @@
     
     
     
-    if ([self.monthTextField isEqual:@""]) {
-        NSLog(@"Blank month field");
-    } else {
-        sharedClass.monthString = [NSString stringWithFormat:@"%@", self.monthTextField.text];
-    }
-    NSLog(@"As the view disapears the riverTextField Says %@", self.riverTextField.text);
-    if ([self.riverTextField isEqual:@""]) {
-        NSLog(@"Blank river field");
-    } else{
-        sharedClass.riverString = [NSString stringWithFormat: @"%@", self.riverTextField.text];
-    }
-    NSLog(@"FilterSington.riverString = %@", sharedClass.riverString);
-        
-    
+   
+    sharedClass.monthString = [NSString stringWithFormat:@"%@", self.monthTextField.text];
+    sharedClass.riverString = [NSString stringWithFormat: @"%@", self.riverTextField.text];
     sharedClass.speciesString = [NSString stringWithFormat:@"%@", self.speciesTextField.text];
     sharedClass.flyString = [NSString stringWithFormat:@"%@", self.flyTextField.text];
+    sharedClass.weatherString = [NSString stringWithFormat:@"%@", self.weatherTextField.text];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -116,9 +104,8 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            NSLog(@"Second view controller successfully retrieved: %@", objects);
             [_dataArray addObjectsFromArray:objects];
-            NSLog(@"Filter screen dataArray contains: %@", _dataArray);
+            // NSLog(@"Filter screen dataArray contains: %@", _dataArray);
             
         } else {
             NSString *errorString = [[error userInfo] objectForKey:@"error"];
@@ -137,20 +124,27 @@
         self.riverSwitch.hidden = NO;
         self.speciesSwitch.hidden = NO;
         self.flySwitch.hidden = NO;
+        self.weatherSwitch.hidden = NO;
         
         
     } else {
         NSLog(@"switch is off");
         FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
         [sharedInstance setFilterOn:NO];
+        
+        // turn off all switches and hide them
         self.monthSwitch.hidden = YES;
         self.monthSwitch.on = NO;
         self.riverSwitch.hidden = YES;
         self.riverSwitch.on = NO;
         self.speciesSwitch.hidden = YES;
         self.speciesSwitch.on = NO;
-        self.flySwitch.hidden =YES;
+        self.flySwitch.hidden = YES;
         self.flySwitch.on = NO;
+        self.weatherSwitch.hidden = YES;
+        self.weatherSwitch.on = NO;
+        
+        // Hide all text fields and set them to nil
         self.monthTextField.hidden = YES;
         self.monthTextField.text = nil;
         self.riverTextField.hidden = YES;
@@ -159,6 +153,8 @@
         self.speciesTextField.text = nil;
         self.flyTextField.hidden = YES;
         self.flyTextField.text = nil;
+        self.weatherTextField.hidden = YES;
+        self.weatherTextField.text = nil;
     }
 }
 
@@ -225,7 +221,7 @@
 
 - (IBAction)toggleForSpeciesSwitch:(id)sender {
     
-    if(speciesSwitch.on) {
+    if (speciesSwitch.on) {
         NSLog(@"Filtering for species");
         FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
         [sharedInstance setSpeciesOn:YES];
@@ -254,7 +250,7 @@
 
 - (IBAction)toggleForFlySwitch:(id)sender {
     
-    if(flySwitch.on) {
+    if (flySwitch.on) {
         NSLog(@"Filtering for fly");
         FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
         [sharedInstance setFlyOn:YES];
@@ -279,6 +275,34 @@
     }
 }
 
+- (IBAction)toggleForWeatherSwitch:(id)sender {
+    
+    if (weatherSwitch.on) {
+        NSLog(@"Filtering for weather");
+        FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
+        [sharedInstance setWeatherOn:YES];
+        self.weatherTextField.hidden = NO;
+        self.weatherPicker = [[UIPickerView alloc] init];
+        NSMutableArray *weatherArray = [_dataArray valueForKey:@"weather"];
+        NSMutableSet *weatherSet = [[NSMutableSet alloc] initWithArray:weatherArray];
+        weatherArray = [[weatherSet allObjects] mutableCopy];
+        self.weatherData = weatherArray;
+        self.weatherPicker.dataSource = self;
+        self.weatherPicker.delegate = self;
+        self.weatherPicker.tag = 4;
+        self.weatherTextField.inputView = self.weatherPicker;
+        sharedInstance.weatherString = self.weatherTextField.text;
+    } else {
+        NSLog(@"Not filtering for weather");
+        FilterSingleton *sharedINstance = [FilterSingleton sharedInstance];
+        [sharedINstance setWeatherOn:NO];
+        self.weatherTextField.hidden = YES;
+        self.weatherTextField.text = nil;
+    }
+    
+}
+
+
 # pragma mark - Text Field Delegates
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -286,7 +310,8 @@
     [self.monthTextField resignFirstResponder];
     [self.riverTextField resignFirstResponder];
     [self.speciesTextField resignFirstResponder];
-    [self.flyTextField resignFirstResponder];               
+    [self.flyTextField resignFirstResponder];
+    [self.weatherTextField resignFirstResponder];
 }
 
 # pragma mark - Pcker View Delegates
@@ -306,6 +331,8 @@
         return [self.speciesData count];
     } else if (pickerView.tag == 3) {
         return [self.flyData count];
+    } else if (pickerView.tag == 4) {
+        return [self.weatherData count];
     }
     
     else {
@@ -324,6 +351,8 @@
         return [self.speciesData objectAtIndex:row];
     } else if (pickerView.tag == 3){
         return [self.flyData objectAtIndex:row];
+    } else if (pickerView.tag ==  4) {
+        return [self.weatherData objectAtIndex:row];
     }
     
     else
@@ -348,6 +377,10 @@
     
     if (pickerView.tag == 3) {
         [self.flyTextField setText:[flyData objectAtIndex:row]];
+    }
+    
+    if (pickerView.tag == 4) {
+        [self.weatherTextField setText:[weatherData objectAtIndex:row]];
     }
 }
 

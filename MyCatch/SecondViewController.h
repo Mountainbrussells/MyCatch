@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *speciesTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *flySwitch;
 @property (weak, nonatomic) IBOutlet UITextField *flyTextField;
+@property (weak, nonatomic) IBOutlet UISwitch *weatherSwitch;
+@property (weak, nonatomic) IBOutlet UITextField *weatherTextField;
+
 
 // Adding pickerViews and arrays
 
@@ -34,7 +37,8 @@
 @property (strong, nonatomic) NSMutableArray *speciesData;
 @property (strong, nonatomic) UIPickerView *flyPicker;
 @property (strong, nonatomic) NSMutableArray *flyData;
-
+@property (strong, nonatomic) UIPickerView *weatherPicker;
+@property (strong, nonatomic) NSMutableArray *weatherData;
 
 
 @end

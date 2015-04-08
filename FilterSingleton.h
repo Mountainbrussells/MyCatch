@@ -19,6 +19,9 @@
 @property (strong, retain) NSString *speciesString;
 @property BOOL flyOn;
 @property (strong, retain) NSString *flyString;
+@property BOOL weatherOn;
+@property (strong, retain) NSString *weatherString;
+
 
 
 

@@ -19,10 +19,19 @@
 
 @implementation LogInViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     self.passwordText.secureTextEntry = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSString *user = self.userName.text;
+    NSString *password = self.passwordText.text;
+    
+    // [SSKeychain setPass]
 }
 
 - (void)didReceiveMemoryWarning {

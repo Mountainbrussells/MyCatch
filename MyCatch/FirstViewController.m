@@ -56,7 +56,6 @@
         
     } else {
         NSLog(@"Filter is off");
-        // PROBLEM:  if you toggle back and forth more than once while filter is on, then data currently disapears
         [self refreshData];
     }
 }
@@ -143,6 +142,16 @@
         [filterArray addObject:flyString];
         }
         
+    }
+    
+    if (sharedInstance.weatherOn == YES) {
+        if ([sharedInstance.weatherString isEqualToString:@""]) {
+            NSLog(@"The weather field is blank");
+        } else {
+            NSString *weatherString = [NSString stringWithFormat:@"weather = '%@'", sharedInstance.weatherString];
+            NSLog(@"The weather string is %@", weatherString);
+            [filterArray addObject:weatherString];
+        }
     }
     
     NSString *filterString = [NSString stringWithFormat:@"%@", [filterArray componentsJoinedByString:@" AND "]];
