@@ -12,6 +12,8 @@
 #import "CatchRecordViewController.h"
 #import "CustomTableViewCell.h"
 #import "FilterSingleton.h"
+#import "SSKeyChain.h"
+#import "SSKeyChainQuery.h"
 
 
 @interface FirstViewController ()
@@ -233,5 +235,16 @@
         CatchRecordViewController *recordView = segue.destinationViewController;
         recordView.catch = [_dataArray objectAtIndex:indexPath.row];
     }}
+
+#pragma mork - log out protocol
+
+- (IBAction)logOut:(id)sender {
+    
+    NSUserDefaults *eUser = [NSUserDefaults standardUserDefaults];
+    NSString *savedUser = [eUser objectForKey:@"user"];
+    [SSKeychain deletePasswordForService:@"com.BenRussell.MyCatch" account:savedUser];
+    
+}
+
 
 @end
