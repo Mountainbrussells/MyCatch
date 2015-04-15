@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="A2E-iy-LK3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="A2E-iy-LK3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -16,8 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qK-Ge-DvJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qK-Ge-DvJ">
                                 <rect key="frame" x="313" y="28" width="35" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8Fo-H4-Jbk"/>
+                                    <constraint firstAttribute="width" constant="35" id="rDU-Qy-NfG"/>
+                                </constraints>
                                 <state key="normal" title="NEW">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -25,13 +29,7 @@
                                     <segue destination="bXT-8U-O4M" kind="show" identifier="showNewCatch" id="W2O-9X-ckm"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MY CATCHES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab3-uc-QTM">
-                                <rect key="frame" x="130" y="32" width="114" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="51Y-rS-NHi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="51Y-rS-NHi">
                                 <rect key="frame" x="0.0" y="59" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -74,10 +72,30 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY CATCHES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab3-uc-QTM">
+                                <rect key="frame" x="130" y="32" width="114" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="F3x-NZ-278"/>
+                                    <constraint firstAttribute="height" constant="21" id="gdq-RM-ds6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ab3-uc-QTM" secondAttribute="centerX" constant="0.5" id="XtY-lb-But"/>
+                            <constraint firstItem="51Y-rS-NHi" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="bDR-25-CdK"/>
+                            <constraint firstAttribute="trailing" secondItem="51Y-rS-NHi" secondAttribute="trailing" id="cff-Oc-9fq"/>
+                            <constraint firstItem="51Y-rS-NHi" firstAttribute="top" secondItem="7qK-Ge-DvJ" secondAttribute="bottom" constant="1" id="miH-Ya-Rpk"/>
+                            <constraint firstItem="ab3-uc-QTM" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="12" id="neK-s9-YpN"/>
+                            <constraint firstItem="7qK-Ge-DvJ" firstAttribute="centerY" secondItem="ab3-uc-QTM" secondAttribute="centerY" constant="0.5" id="qe6-Ua-oiw"/>
+                            <constraint firstItem="7qK-Ge-DvJ" firstAttribute="leading" secondItem="ab3-uc-QTM" secondAttribute="trailing" constant="69" id="vaI-I1-ort"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Catches" image="first" id="acW-dT-cKf"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="catchTable" destination="51Y-rS-NHi" id="361-ea-ZQQ"/>
                     </connections>

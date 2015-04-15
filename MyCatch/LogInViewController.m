@@ -31,7 +31,7 @@
     NSString *user = self.userName.text;
     NSString *password = self.passwordText.text;
     
-    // [SSKeychain setPass]
+    
 }
 
 - (void)didReceiveMemoryWarning {
