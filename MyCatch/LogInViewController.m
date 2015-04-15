@@ -8,6 +8,8 @@
 
 #import "LogInViewController.h"
 #import "TabBarViewController.h"
+#import "SSKeyChain.h"
+#import "SSKeyChainQuery.h"
 #import <Parse/Parse.h>
 
 @interface LogInViewController ()
@@ -24,14 +26,28 @@
     [super viewDidLoad];
 
     self.passwordText.secureTextEntry = YES;
+    NSUserDefaults *eUser = [NSUserDefaults standardUserDefaults];
+    NSString *savedUser = [eUser objectForKey:@"user"];
+    
+    NSString *passWord = [SSKeychain passwordForService:@"com.BenRussell.MyCatch" account:savedUser];
+    if (passWord != nil) {
+       // fill in username and password automatically
+        
+        self.userName.text = savedUser;
+        self.passwordText.text = passWord;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     NSString *user = self.userName.text;
     NSString *password = self.passwordText.text;
-    
-    
+    // Save password
+    [SSKeychain setPassword:password forService:@"com.BenRussell.MyCatch" account:user];
+    // Save User
+    NSUserDefaults *dUser = [NSUserDefaults standardUserDefaults];
+    [dUser setObject:user forKey:@"user"];
+    [dUser synchronize];
 }
 
 - (void)didReceiveMemoryWarning {
