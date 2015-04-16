@@ -67,7 +67,8 @@
     
     tapScroll.cancelsTouchesInView = NO;
     [self.scrollView addGestureRecognizer:tapScroll];
-
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -105,6 +106,18 @@
 - (void) refreshData
 {
     [_dataArray removeAllObjects];
+    
+    // Recall User if needed
+    if(!self.user){
+        NSUserDefaults *eUser = [NSUserDefaults standardUserDefaults];
+        NSString *savedUser = [eUser objectForKey:@"user"];
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"username" equalTo:savedUser];
+        NSArray *array = [query findObjects];
+        PFUser *currentUser= [array objectAtIndex:0];
+        self.user = currentUser;
+        
+    }
     
     PFQuery *query = [PFQuery queryWithClassName:@"Catch"];
     [query whereKey:@"user" equalTo:self.user];

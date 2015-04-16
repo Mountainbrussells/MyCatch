@@ -10,6 +10,7 @@
 #import "FirstViewController.h"
 #import "NewCatchViewController.h"
 #import "CatchRecordViewController.h"
+#import "LogInViewController.h"
 #import "CustomTableViewCell.h"
 #import "FilterSingleton.h"
 #import "SSKeyChain.h"
@@ -73,6 +74,18 @@
 {
     [_dataArray removeAllObjects];
     
+    // Recall User if needed
+    if(!self.user){
+        NSUserDefaults *eUser = [NSUserDefaults standardUserDefaults];
+        NSString *savedUser = [eUser objectForKey:@"user"];
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"username" equalTo:savedUser];
+        NSArray *array = [query findObjects];
+        PFUser *currentUser= [array objectAtIndex:0];
+        self.user = currentUser;
+        
+    }
+        
     PFQuery *query = [PFQuery queryWithClassName:@"Catch"];
     [query whereKey:@"user" equalTo:self.user];
     [query orderByAscending:@"date"];
@@ -81,6 +94,7 @@
         if (!error) {
             //NSLog(@"Successfully retrieved: %@", objects);
             [_dataArray addObjectsFromArray:objects];
+            
             //NSLog(@"dataArray contains: %@", _dataArray);
             
             // Load data into table once it has been retrieved
@@ -90,8 +104,9 @@
         } else {
             NSString *errorString = [[error userInfo] objectForKey:@"error"];
             UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [errorAlertView show];        }
+                [errorAlertView show];        }
     }];
+    
 }
 
 - (void) filterData
@@ -242,8 +257,15 @@
     
     NSUserDefaults *eUser = [NSUserDefaults standardUserDefaults];
     NSString *savedUser = [eUser objectForKey:@"user"];
+    // Remove password
     [SSKeychain deletePasswordForService:@"com.BenRussell.MyCatch" account:savedUser];
-    
+    // Remove user
+    [eUser removeObjectForKey:@"user"];
+    // go to rootview controller
+    // USERNAME AND PASWORD ARE STILL POPULATED AFTER ViewController DISMISSED
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LogInViewController *livc = [storyBoard instantiateViewControllerWithIdentifier:@"LogIn"];
+    [self presentViewController:livc animated:YES completion:nil];
 }
 
 

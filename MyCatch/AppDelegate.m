@@ -8,6 +8,9 @@
 
 
 #import "AppDelegate.h"
+#import "SSKeyChain.h"
+#import "SSKeyChainQuery.h"
+#import "TabBarViewController.h"
 #import <Parse/Parse.h>
 
 @interface AppDelegate ()
@@ -32,6 +35,35 @@
     // https://parse.com/docs/ios_guide#localdatastore/iOS
     // [Parse enableLocalDatastore];
     
+    // Skip login screen if logged in
+    NSUserDefaults *eUser = [NSUserDefaults standardUserDefaults];
+    NSString *savedUser = [eUser objectForKey:@"user"];
+    
+    
+    
+    NSString *passWord = [SSKeychain passwordForService:@"com.BenRussell.MyCatch" account:savedUser];
+    if (passWord != nil) {
+        self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        TabBarViewController *uvc = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+        
+        self.window.rootViewController = uvc;
+        [self.window makeKeyAndVisible];
+
+        
+    
+        
+        
+    } else {
+        self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *uvc = [storyboard instantiateViewControllerWithIdentifier:@"LogIn"];
+        
+        self.window.rootViewController = uvc;
+        [self.window makeKeyAndVisible];
+    }
     
     return YES;
 }
