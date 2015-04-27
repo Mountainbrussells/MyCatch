@@ -68,7 +68,7 @@
     tapScroll.cancelsTouchesInView = NO;
     [self.scrollView addGestureRecognizer:tapScroll];
     
-    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"LighterFishnet_scalechange"]]];
 }
 
 -(void)viewWillAppear:(BOOL)animated

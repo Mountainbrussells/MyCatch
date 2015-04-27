@@ -26,6 +26,8 @@
     self.passwordText.secureTextEntry = YES;
     self.passwordCheckText.secureTextEntry = YES;
     
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"LighterFishnet_scalechange"]]];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,6 +92,9 @@
 }
 
 
+- (IBAction)backButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];    
+}
 
 
 

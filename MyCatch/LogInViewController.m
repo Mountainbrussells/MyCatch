@@ -26,6 +26,7 @@
     [super viewDidLoad];
 
     self.passwordText.secureTextEntry = YES;
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"LighterFishnet_scalechange"]]];
     
     
 }

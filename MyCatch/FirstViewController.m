@@ -33,7 +33,8 @@
     catchTable.delegate = self;
     catchTable.dataSource = self;
     
-    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"LighterFishnet_scalechange"]]];
+    [self.catchTable setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -111,6 +112,18 @@
 
 - (void) filterData
 {
+    // Recall User if needed
+    if(!self.user){
+        NSUserDefaults *eUser = [NSUserDefaults standardUserDefaults];
+        NSString *savedUser = [eUser objectForKey:@"user"];
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"username" equalTo:savedUser];
+        NSArray *array = [query findObjects];
+        PFUser *currentUser= [array objectAtIndex:0];
+        self.user = currentUser;
+        
+    }
+    
     FilterSingleton *sharedInstance = [FilterSingleton sharedInstance];
     NSMutableArray *filterArray = [[NSMutableArray alloc] init];
     [filterArray removeAllObjects];

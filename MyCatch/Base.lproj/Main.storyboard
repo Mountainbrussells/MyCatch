@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--My Catches-->
@@ -72,13 +72,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY CATCHES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab3-uc-QTM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Catches" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab3-uc-QTM">
                                 <rect key="frame" x="130" y="32" width="114" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="F3x-NZ-278"/>
                                     <constraint firstAttribute="height" constant="21" id="gdq-RM-ds6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -600,12 +600,12 @@
                                     <segue destination="49e-Tb-3d3" kind="show" identifier="LoginSuccesful" id="8hl-hC-kCu"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPi-Vq-NQI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="New User?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPi-Vq-NQI">
                                 <rect key="frame" x="61" y="247" width="136" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="Ttt-a9-yvf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -618,6 +618,12 @@
                                     <segue destination="ogo-fT-d8r" kind="show" id="ehx-o5-mdc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Catch" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Il-QZ-P0j">
+                                <rect key="frame" x="145" y="34" width="85" height="23"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -626,6 +632,7 @@
                             <constraint firstItem="DH5-p6-oKG" firstAttribute="height" secondItem="Rf5-N3-G5i" secondAttribute="height" id="LzG-hj-eib"/>
                             <constraint firstItem="yPi-Vq-NQI" firstAttribute="top" secondItem="3M0-PH-ste" secondAttribute="bottom" constant="21" id="Mhl-7I-PNY"/>
                             <constraint firstItem="yPi-Vq-NQI" firstAttribute="centerY" secondItem="uSq-yG-0aw" secondAttribute="centerY" constant="-0.5" id="Tdf-PJ-1S6"/>
+                            <constraint firstAttribute="centerX" secondItem="4Il-QZ-P0j" secondAttribute="centerX" constant="0.5" id="VMY-pZ-SG0"/>
                             <constraint firstItem="Rf5-N3-G5i" firstAttribute="top" secondItem="Zb1-PJ-mvd" secondAttribute="bottom" constant="63" id="Vc0-ix-2zE"/>
                             <constraint firstItem="DH5-p6-oKG" firstAttribute="top" secondItem="Rf5-N3-G5i" secondAttribute="bottom" constant="25" id="Zae-24-eja"/>
                             <constraint firstAttribute="centerX" secondItem="Rf5-N3-G5i" secondAttribute="centerX" id="pRF-xQ-S4f"/>
@@ -633,6 +640,7 @@
                             <constraint firstAttribute="centerX" secondItem="3M0-PH-ste" secondAttribute="centerX" id="pqm-D7-gNT"/>
                             <constraint firstItem="DH5-p6-oKG" firstAttribute="trailing" secondItem="Rf5-N3-G5i" secondAttribute="trailing" id="uqE-YL-GyZ"/>
                             <constraint firstItem="3M0-PH-ste" firstAttribute="top" secondItem="Zb1-PJ-mvd" secondAttribute="bottom" constant="176" id="vGD-nu-gmE"/>
+                            <constraint firstItem="Rf5-N3-G5i" firstAttribute="top" secondItem="4Il-QZ-P0j" secondAttribute="bottom" constant="26" id="y6o-2I-gzk"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -658,29 +666,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LDF-Zt-r1v">
-                                <rect key="frame" x="58" y="42" width="262" height="30"/>
+                                <rect key="frame" x="56" y="136" width="262" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gLW-RS-FQG">
-                                <rect key="frame" x="58" y="110" width="262" height="30"/>
+                                <rect key="frame" x="56" y="207" width="262" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-Enter Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRl-fM-aBs">
-                                <rect key="frame" x="58" y="156" width="262" height="30"/>
+                                <rect key="frame" x="58" y="250" width="262" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHG-4y-ZXO">
-                                <rect key="frame" x="160" y="224" width="55" height="30"/>
+                                <rect key="frame" x="162" y="282" width="55" height="30"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="signUp:" destination="ogo-fT-d8r" eventType="touchUpInside" id="EzN-ak-VDz"/>
                                     <segue destination="49e-Tb-3d3" kind="show" identifier="SignupSuccesful" id="hfk-yt-fGj"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Catch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4b-ul-wh4">
+                                <rect key="frame" x="143" y="69" width="93" height="21"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kN-NE-yUw">
+                                <rect key="frame" x="23" y="65" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButton:" destination="ogo-fT-d8r" eventType="touchUpInside" id="qgB-uW-voJ"/>
                                 </connections>
                             </button>
                         </subviews>
