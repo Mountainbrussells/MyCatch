@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *techniqueTextView;
 @property (nonatomic, strong) PFUser *user;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 
 @end

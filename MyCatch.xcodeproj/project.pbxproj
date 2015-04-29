@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7CC4ECA71789276FA0B91C2F /* libPods-MyCatch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4F802A3FF06290418D6EFC /* libPods-MyCatch.a */; };
 		C916132A1AEEA3770024BF6A /* LighterFishnet_scalechange.png in Resources */ = {isa = PBXBuildFile; fileRef = C91613291AEEA3770024BF6A /* LighterFishnet_scalechange.png */; };
+		C916132E1AEEE6BF0024BF6A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C916132D1AEEE6BF0024BF6A /* Bolts.framework */; };
+		C91613301AEEE6C70024BF6A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C916132F1AEEE6C70024BF6A /* Parse.framework */; };
 		C93950F21AA65583004867CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C93950F11AA65583004867CB /* main.m */; };
 		C93950F51AA65583004867CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C93950F41AA65583004867CB /* AppDelegate.m */; };
 		C93950F81AA65583004867CB /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93950F71AA65583004867CB /* FirstViewController.m */; };
@@ -33,8 +35,6 @@
 		C939514D1AA7A098004867CB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C939514C1AA7A098004867CB /* SystemConfiguration.framework */; };
 		C939514F1AA7A0A2004867CB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C939514E1AA7A0A2004867CB /* UIKit.framework */; };
 		C93951511AA7A0AD004867CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93951501AA7A0AD004867CB /* Foundation.framework */; };
-		C93951531AA7A520004867CB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93951521AA7A520004867CB /* Parse.framework */; };
-		C93951551AA7A55B004867CB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93951541AA7A55B004867CB /* Bolts.framework */; };
 		C9BC740B1AA7A99000E68B94 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BC740A1AA7A99000E68B94 /* LogInViewController.m */; };
 		C9BC740E1AA7AC0600E68B94 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BC740D1AA7AC0600E68B94 /* SignUpViewController.m */; };
 		C9BC74111AA8C11B00E68B94 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BC74101AA8C11B00E68B94 /* TabBarViewController.m */; };
@@ -58,6 +58,8 @@
 		65C5B9258B673CA1B15EBE0E /* Pods-MyCatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyCatch/Pods-MyCatch.release.xcconfig"; sourceTree = "<group>"; };
 		8C4F802A3FF06290418D6EFC /* libPods-MyCatch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyCatch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91613291AEEA3770024BF6A /* LighterFishnet_scalechange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LighterFishnet_scalechange.png; sourceTree = "<group>"; };
+		C916132D1AEEE6BF0024BF6A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		C916132F1AEEE6C70024BF6A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		C93950EC1AA65583004867CB /* MyCatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C93950F01AA65583004867CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C93950F11AA65583004867CB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -89,8 +91,6 @@
 		C939514C1AA7A098004867CB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C939514E1AA7A0A2004867CB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C93951501AA7A0AD004867CB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C93951521AA7A520004867CB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Downloads/parse-library-1.6.3 (1) 2/Parse.framework"; sourceTree = "<group>"; };
-		C93951541AA7A55B004867CB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Downloads/parse-library-1.6.3 (1) 2/Bolts.framework"; sourceTree = "<group>"; };
 		C9BC74091AA7A99000E68B94 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		C9BC740A1AA7A99000E68B94 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		C9BC740C1AA7AC0600E68B94 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -126,11 +126,11 @@
 				C939513D1AA7A01E004867CB /* CoreLocation.framework in Frameworks */,
 				C939513B1AA7A010004867CB /* CoreGraphics.framework in Frameworks */,
 				C93951391AA7A001004867CB /* CFNetwork.framework in Frameworks */,
+				C91613301AEEE6C70024BF6A /* Parse.framework in Frameworks */,
 				C93951371AA79FF7004867CB /* AdSupport.framework in Frameworks */,
 				C93951351AA79FEF004867CB /* Accounts.framework in Frameworks */,
+				C916132E1AEEE6BF0024BF6A /* Bolts.framework in Frameworks */,
 				C93951331AA79FE4004867CB /* AudioToolbox.framework in Frameworks */,
-				C93951531AA7A520004867CB /* Parse.framework in Frameworks */,
-				C93951551AA7A55B004867CB /* Bolts.framework in Frameworks */,
 				7CC4ECA71789276FA0B91C2F /* libPods-MyCatch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,8 +165,8 @@
 		C93950E31AA65583004867CB = {
 			isa = PBXGroup;
 			children = (
-				C93951541AA7A55B004867CB /* Bolts.framework */,
-				C93951521AA7A520004867CB /* Parse.framework */,
+				C916132F1AEEE6C70024BF6A /* Parse.framework */,
+				C916132D1AEEE6BF0024BF6A /* Bolts.framework */,
 				C93951501AA7A0AD004867CB /* Foundation.framework */,
 				C939514E1AA7A0A2004867CB /* UIKit.framework */,
 				C939514C1AA7A098004867CB /* SystemConfiguration.framework */,
@@ -535,6 +535,7 @@
 					"/Users/brussell/Downloads/parse-library-1.6.3",
 					"(1)",
 					2,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MyCatch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -555,6 +556,7 @@
 					"/Users/brussell/Downloads/parse-library-1.6.3",
 					"(1)",
 					2,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MyCatch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

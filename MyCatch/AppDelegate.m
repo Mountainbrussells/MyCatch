@@ -21,19 +21,22 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    // Enable Local datastore
+    // [Parse enableLocalDatastore];
     
     // Initialize Parse.
     [Parse setApplicationId:@"HD0Do66FDtcizDaTXo3QY9l1yV64t4Mu8vDjImIs"
                   clientKey:@"NILcVjVeRz8dCRJHFDpgVIiei0hmWrLzRF5YiwGp"];
     
+    
+    
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    // Need to implement thi but enableLocalDataStore is throwing an exeption
+    // Need to implement this but enableLocalDataStore is throwing an exeption
     // [Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS
-    // [Parse enableLocalDatastore];
+    
     
     // Skip login screen if logged in
     NSUserDefaults *eUser = [NSUserDefaults standardUserDefaults];

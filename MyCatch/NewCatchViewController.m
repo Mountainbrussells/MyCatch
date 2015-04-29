@@ -14,6 +14,8 @@
 
 @implementation NewCatchViewController
 
+@synthesize scrollView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -28,6 +30,15 @@
     
     // Use filtered NSDate object to set dateLabel contents
     self.dateLabel.text = [dateFormatter stringFromDate:now];
+    
+    [self.catchImageView.layer setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.catchImageView.layer setBorderWidth:2.0];
+    
+    // add scrollView method
+    UITapGestureRecognizer *tapScroll = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
+    
+    tapScroll.cancelsTouchesInView = NO;
+    [self.scrollView addGestureRecognizer:tapScroll];
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"LighterFishnet_scalechange"]]];
     
@@ -160,6 +171,17 @@
     [self.techniqueTextView resignFirstResponder];
 }
 
+// tapped method for scrollView
+
+- (void)tapped
+{
+    [self.tempTextView resignFirstResponder];
+    [self.riverTextView resignFirstResponder];
+    [self.speciesTextView resignFirstResponder];
+    [self.flyTextView resignFirstResponder];
+    [self.weatherTextView resignFirstResponder];
+    [self.techniqueTextView resignFirstResponder];
+}
 /*
 #pragma mark - Navigation
 
